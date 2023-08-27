@@ -1,4 +1,5 @@
 import org.junit.Test;
+import org.openqa.selenium.devtools.v85.profiler.model.Profile;
 import pages.AccountPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -10,22 +11,9 @@ public class TransitionTest extends TestBase {
 
     @Test
     public void openProfile(){
-        HomePage homePage = new HomePage(driver);
-        homePage.openMaximizedAndWait();
-        homePage.clickPersonalAccount();
-
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.waitForLoginButton();
-        loginPage.fillLoginForm(getTempUserEmail(), getTempUserPassword());
-        loginPage.clickLoginButton();
-
-        AccountPage accountPage = new AccountPage(driver);
-        accountPage.waitForOrderButton();
-        accountPage.openProfile();
+        logInAndOpenProfile();
 
         ProfilePage profilePage = new ProfilePage(driver);
-        profilePage.waitForPageLoaded();
-
         String expected = "Профиль";
         String actual = profilePage.getProfileText();
         assertEquals(expected, actual);
@@ -33,34 +21,34 @@ public class TransitionTest extends TestBase {
 
     @Test
     public void openConstructorViaLink(){
-        HomePage homePage = new HomePage(driver);
-        homePage.openMaximizedAndWait();
-        homePage.clickPersonalAccount();
-
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.waitForLoginButton();
-        loginPage.fillLoginForm(getTempUserEmail(), getTempUserPassword());
-        loginPage.clickLoginButton();
-
-        AccountPage accountPage = new AccountPage(driver);
-        accountPage.waitForOrderButton();
-        accountPage.openProfile();
+        logInAndOpenProfile();
 
         ProfilePage profilePage = new ProfilePage(driver);
-        profilePage.waitForPageLoaded();
-
         profilePage.clickConstructorLink();
 
-        accountPage = new AccountPage(driver);
-        accountPage.waitForOrderButton();
-
-        String expected = "Оформить заказ";
-        String actual = accountPage.getOrderButtonText();
-        assertEquals(expected, actual);
+        assertOrderButtonIsThere();
     }
 
     @Test
     public void openConstructorViaLogo(){
+        logInAndOpenProfile();
+
+        ProfilePage profilePage = new ProfilePage(driver);
+        profilePage.clickConstructorLogo();
+
+        assertOrderButtonIsThere();
+    }
+
+    private void assertOrderButtonIsThere() {
+        AccountPage accountPage = new AccountPage(driver);
+        accountPage.waitForOrderButton();
+
+        String expected = "Оформить заказ";
+        String actual = accountPage.getOrderButtonText();
+        assertEquals(expected, actual);
+    }
+
+    private void logInAndOpenProfile() {
         HomePage homePage = new HomePage(driver);
         homePage.openMaximizedAndWait();
         homePage.clickPersonalAccount();
@@ -76,15 +64,5 @@ public class TransitionTest extends TestBase {
 
         ProfilePage profilePage = new ProfilePage(driver);
         profilePage.waitForPageLoaded();
-
-        profilePage.clickConstructorLogo();
-
-        accountPage = new AccountPage(driver);
-        accountPage.waitForOrderButton();
-
-        String expected = "Оформить заказ";
-        String actual = accountPage.getOrderButtonText();
-        assertEquals(expected, actual);
     }
-
 }

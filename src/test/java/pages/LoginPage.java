@@ -9,7 +9,7 @@ public class LoginPage {
     public static final String URL = "https://stellarburgers.nomoreparties.site/login";
     private static final By EMAIL_FIELD = By.xpath(".//input[@name='name']");
     private static final By PASSWORD_FIELD = By.xpath(".//input[@name='Пароль']");
-    public static final By LOGIN_BUTTON = By.xpath(".//button[text()='Войти']");
+    private static final By LOGIN_BUTTON = By.xpath(".//button[text()='Войти']");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;

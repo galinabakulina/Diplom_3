@@ -3,6 +3,7 @@ package pages;
 import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -37,22 +38,25 @@ public class HomePage {
     public String chooseBuns() {
         Util.waitForElementToBeClickable(driver, BUNS);
         Util.clickElement(driver, BUNS);
-        new WebDriverWait(driver, Duration.ofSeconds(20));
-        Util.scrollToElement(driver, CURRENT);
+        System.out.println(driver.findElement(CURRENT).getText());
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.textToBePresentInElementLocated(CURRENT, "Булки"));
+        System.out.println(driver.findElement(CURRENT).getText());
         return driver.findElement(CURRENT).getText();
     }
     public String chooseSauces() {
         Util.waitForElementToBeClickable(driver, SAUCES);
         Util.clickElement(driver, SAUCES);
-        new WebDriverWait(driver, Duration.ofSeconds(20));
-        Util.scrollToElement(driver, CURRENT);
+        System.out.println(driver.findElement(CURRENT).getText());
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.textToBePresentInElementLocated(CURRENT, "Соусы"));
+        System.out.println(driver.findElement(CURRENT).getText());
         return driver.findElement(CURRENT).getText();
     }
     public String chooseFillings() {
         Util.waitForElementToBeClickable(driver, FILLINGS);
         Util.clickElement(driver, FILLINGS);
-        new WebDriverWait(driver, Duration.ofSeconds(20));
-        Util.scrollToElement(driver, CURRENT);
+        System.out.println(driver.findElement(CURRENT).getText());
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.textToBePresentInElementLocated(CURRENT, "Начинки"));
+        System.out.println(driver.findElement(CURRENT).getText());
         return driver.findElement(CURRENT).getText();
     }
 }

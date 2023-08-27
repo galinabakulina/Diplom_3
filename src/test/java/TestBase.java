@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.UUID;
 
 public class TestBase {
+
     protected WebDriver driver;
 
     private String tempUserEmail;
