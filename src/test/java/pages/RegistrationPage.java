@@ -3,8 +3,6 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.time.Duration;
-
 public class RegistrationPage {
     private final WebDriver driver;
     private static final String URL = "https://stellarburgers.nomoreparties.site/register";

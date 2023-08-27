@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 public class AccountPage {
 
     private final WebDriver driver;
-    private static final String URL = "https://stellarburgers.nomoreparties.site";
     private static final By ORDER_BUTTON = By.xpath(".//button[text()='Оформить заказ']");
     private static final By PROFILE = By.xpath(".//p[text()='Личный Кабинет']");
     public AccountPage(WebDriver driver) {

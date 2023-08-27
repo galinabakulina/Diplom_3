@@ -1,5 +1,4 @@
 import org.junit.Test;
-import org.openqa.selenium.By;
 import pages.HomePage;
 
 import static org.junit.Assert.assertEquals;

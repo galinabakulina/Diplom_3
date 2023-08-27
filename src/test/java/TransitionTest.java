@@ -1,5 +1,4 @@
 import org.junit.Test;
-import org.openqa.selenium.devtools.v85.profiler.model.Profile;
 import pages.AccountPage;
 import pages.HomePage;
 import pages.LoginPage;

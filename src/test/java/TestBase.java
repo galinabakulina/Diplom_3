@@ -10,7 +10,6 @@ import java.util.UUID;
 public class TestBase {
 
     protected WebDriver driver;
-
     private String tempUserEmail;
     private final String tempUserPassword = "q1w2e3r4t5ty6";
     private final String tempUserName = "Galina";
@@ -45,10 +44,6 @@ public class TestBase {
 
     protected String getTempUserPassword() {
         return tempUserPassword;
-    }
-
-    protected String getTempUserName() {
-        return tempUserName;
     }
 
     protected void deleteUser(String email, String password) {

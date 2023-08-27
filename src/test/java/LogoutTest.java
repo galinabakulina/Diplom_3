@@ -1,8 +1,5 @@
 import org.junit.Test;
-import pages.AccountPage;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.ProfilePage;
+import pages.*;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
