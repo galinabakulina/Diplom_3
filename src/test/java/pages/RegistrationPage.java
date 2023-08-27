@@ -12,6 +12,7 @@ public class RegistrationPage {
     private static final By EMAIL_FIELD = By.xpath(".//input[@name='name']");
     private static final By PASSWORD_FIELD = By.xpath(".//input[@name='Пароль']");
     private static final By AUTH_BUTTON = By.xpath(".//button[text()='Зарегистрироваться']");
+    private static final By LOGIN = By.xpath(".//a[text()='Войти']");
     private static final By SHORT_PSW_ERROR =By.xpath(".//p[@class='input__error text_type_main-default']");
 
     public RegistrationPage(WebDriver driver) {
@@ -23,7 +24,7 @@ public class RegistrationPage {
         Util.waitForPageLoaded(driver, "register");
     }
 
-    public void waitForShortPassworError() {
+    public void waitForShortPasswordError() {
         Util.waitForPresenceOfElementLocated(driver, SHORT_PSW_ERROR);
     }
 
@@ -55,5 +56,9 @@ public class RegistrationPage {
 
     public void clickAuthButton(){
         Util.clickElement(driver, AUTH_BUTTON);
+    }
+
+    public void clickLoginButton(){
+        Util.clickElement(driver, LOGIN);
     }
 }

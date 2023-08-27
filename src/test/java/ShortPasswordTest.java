@@ -23,7 +23,7 @@ public class ShortPasswordTest extends TestBase {
     public void getIncorrectPasswordError() {
         registrationPage.fillAuthForm(name, email, password);
         registrationPage.clickAuthButton();
-        registrationPage.waitForShortPassworError();
+        registrationPage.waitForShortPasswordError();
         String actual = registrationPage.getShortPasswordErrorText();
         String expected = "Некорректный пароль";
         assertEquals(expected, actual);

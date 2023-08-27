@@ -22,10 +22,10 @@ public class ApiHelper {
     }
 
     @Step("Send post request to " + LOGIN_USER)
-    public static Response login(String login, String password){
+    public static Response login(String email, String password){
         return given()
                 .header("Content-type", "application/json")
-                .body(new LoginRequest(login, password))
+                .body(new LoginRequest(email, password))
                 .post(LOGIN_USER);
     }
 
