@@ -38,9 +38,4 @@ public class LoginPage {
         Util.clickElement(driver, LOGIN_BUTTON);
     }
 
-
-    public void openMaximizedAndWait() {
-        Util.openMaximized(driver, URL);
-        Util.waitForPageLoaded(driver, "login");
-    }
 }

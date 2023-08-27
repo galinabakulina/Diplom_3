@@ -23,6 +23,8 @@ public class TestBase {
 
     @Before
     public void setUpDriver() {
+        // Uncomment the following line to disable Chrome and use Yandex
+        // System.setProperty("webdriver.chrome.driver", "/Users/galinalobanova/WebDriver/bin/yandexdriver");
         driver = new ChromeDriver();
     }
 

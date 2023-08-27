@@ -1,13 +1,22 @@
 package pages;
 
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class HomePage {
     private final WebDriver driver;
     private static final String URL = "https://stellarburgers.nomoreparties.site";
     private static final By ENTER_ACCOUNT_BUTTON = By.xpath(".//button[text()='Войти в аккаунт']");
     private static final By PERSONAL_ACCOUNT = By.xpath(".//p[text()='Личный Кабинет']");
+    private static final By BUNS = By.xpath( ".//span[text() = 'Булки']");
+    private static final By SAUCES = By.xpath( ".//span[text() = 'Соусы']");
+    private static final By FILLINGS = By.xpath( ".//span[text() = 'Начинки']");
+    private final By CURRENT = By.xpath(".//div[contains(@class, 'tab_tab_type_current')]/span");
     public HomePage(WebDriver driver) {
         this.driver = driver;
     }
@@ -23,5 +32,27 @@ public class HomePage {
 
     public void clickPersonalAccount() {
         Util.clickElement(driver, PERSONAL_ACCOUNT);
+    }
+
+    public String chooseBuns() {
+        Util.waitForElementToBeClickable(driver, BUNS);
+        Util.clickElement(driver, BUNS);
+        new WebDriverWait(driver, Duration.ofSeconds(20));
+        Util.scrollToElement(driver, CURRENT);
+        return driver.findElement(CURRENT).getText();
+    }
+    public String chooseSauces() {
+        Util.waitForElementToBeClickable(driver, SAUCES);
+        Util.clickElement(driver, SAUCES);
+        new WebDriverWait(driver, Duration.ofSeconds(20));
+        Util.scrollToElement(driver, CURRENT);
+        return driver.findElement(CURRENT).getText();
+    }
+    public String chooseFillings() {
+        Util.waitForElementToBeClickable(driver, FILLINGS);
+        Util.clickElement(driver, FILLINGS);
+        new WebDriverWait(driver, Duration.ofSeconds(20));
+        Util.scrollToElement(driver, CURRENT);
+        return driver.findElement(CURRENT).getText();
     }
 }
