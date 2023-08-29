@@ -33,28 +33,29 @@ public class HomePage {
         Util.clickElement(driver, PERSONAL_ACCOUNT);
     }
 
-    public String chooseBuns() {
-        Util.waitForElementToBeClickable(driver, BUNS);
-        Util.clickElement(driver, BUNS);
-        System.out.println(driver.findElement(CURRENT).getText());
-        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.textToBePresentInElementLocated(CURRENT, "Булки"));
+    public String chooseMenuSection(String section) {
+        By locator = BUNS;
+        switch(section) {
+            case "Соусы":
+                locator = SAUCES;
+                Util.waitForElementToBeClickable(driver, locator);
+                Util.clickElement(driver, locator);
+                System.out.println(driver.findElement(CURRENT).getText());
+                break;
+            case "Начинки":
+                locator = FILLINGS;
+                Util.waitForElementToBeClickable(driver, locator);
+                Util.clickElement(driver, locator);
+                System.out.println(driver.findElement(CURRENT).getText());
+                break;
+            default:
+                System.out.println(driver.findElement(CURRENT).getText());
+        }
+
+
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.textToBePresentInElementLocated(CURRENT, section));
         System.out.println(driver.findElement(CURRENT).getText());
         return driver.findElement(CURRENT).getText();
     }
-    public String chooseSauces() {
-        Util.waitForElementToBeClickable(driver, SAUCES);
-        Util.clickElement(driver, SAUCES);
-        System.out.println(driver.findElement(CURRENT).getText());
-        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.textToBePresentInElementLocated(CURRENT, "Соусы"));
-        System.out.println(driver.findElement(CURRENT).getText());
-        return driver.findElement(CURRENT).getText();
-    }
-    public String chooseFillings() {
-        Util.waitForElementToBeClickable(driver, FILLINGS);
-        Util.clickElement(driver, FILLINGS);
-        System.out.println(driver.findElement(CURRENT).getText());
-        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.textToBePresentInElementLocated(CURRENT, "Начинки"));
-        System.out.println(driver.findElement(CURRENT).getText());
-        return driver.findElement(CURRENT).getText();
-    }
+    
 }
